@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
-  const Home({ Key? key }) : super(key: key);
+  const Home({Key? key}) : super(key: key);
 
   @override
   _HomeState createState() => _HomeState();
@@ -15,12 +15,27 @@ class _HomeState extends State<Home> {
         child: Icon(Icons.add),
         onPressed: () {},
       ),
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            ListTile(
+              leading: Icon(Icons.home),
+              title: Text('Home'),
+              onTap: () {},
+            ),
+            ListTile(
+              leading: Icon(Icons.share),
+              title: Text('Invite'),
+              onTap: () {},
+            ),
+          ],
+        ),
+      ),
       appBar: AppBar(
         title: Text('Home'),
         actions: [
-          IconButton(onPressed: () {}, 
-          icon: Icon(Icons.power_settings_new_outlined)
-          )
+          IconButton(
+              onPressed: () {}, icon: Icon(Icons.power_settings_new_outlined))
         ],
       ),
       body: Container(),
