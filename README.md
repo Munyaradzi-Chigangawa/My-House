@@ -2,10 +2,6 @@
 
 Clubhouse clone using flutter and firebase
 
-# Credits
-
-* [Firebase Auth](https://pub.dev/packages/firebase_auth)
-
 # Developed By
 
 * Munyaradzi Chigangawa 
