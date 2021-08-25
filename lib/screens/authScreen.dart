@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:my_house/screens/home.dart';
@@ -15,6 +16,7 @@ class _AuthScreenState extends State<AuthScreen> {
   bool isLoading = false;
   bool isOTPscreen = false;
   FirebaseAuth _firebaseAuth = FirebaseAuth.instance; 
+  FirebaseFirestore _firestore = FirebaseFirestore.instance;
   var verificationCode;
 
   @override
@@ -30,9 +32,16 @@ class _AuthScreenState extends State<AuthScreen> {
     await _firebaseAuth.verifyPhoneNumber(
       phoneNumber: _phoneNumber, 
       verificationCompleted: (PhoneAuthCredential credential){
-        _firebaseAuth.signInWithCredential(credential).then((userData){
+        _firebaseAuth.signInWithCredential(credential).then((userData) async {
           // ignore: unnecessary_null_comparison
           if (userData != null) {
+            await _firestore.collection('users').doc(userData.user!.uid).set({
+              'name': '',
+              'phone': userData.user!.phoneNumber,
+              'uid': userData.user!.uid,
+              'invitesLeft':10,
+            });
+
             print(userData.user!.phoneNumber);
             setState(() {
               isLoading = false;
