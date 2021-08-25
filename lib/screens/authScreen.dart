@@ -42,7 +42,6 @@ class _AuthScreenState extends State<AuthScreen> {
               'invitesLeft':10,
             });
 
-            print(userData.user!.phoneNumber);
             setState(() {
               isLoading = false;
             });
