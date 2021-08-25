@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:my_house/screens/home.dart';
 
@@ -13,17 +14,79 @@ class _AuthScreenState extends State<AuthScreen> {
   final TextEditingController otpController = TextEditingController();
   bool isLoading = false;
   bool isOTPscreen = false;
-
+  FirebaseAuth _firebaseAuth = FirebaseAuth.instance; 
+  var verificationCode;
 
   @override
   void dispose() {
     phoneController.dispose();
     super.dispose();
   }
+  Future phoneAuth() async {
+    var _phoneNumber = "+263" + phoneController.text.trim(); 
+    setState(() {
+      isLoading = true;
+    });
+    await _firebaseAuth.verifyPhoneNumber(
+      phoneNumber: _phoneNumber, 
+      verificationCompleted: (PhoneAuthCredential credential){
+        _firebaseAuth.signInWithCredential(credential).then((userData){
+          // ignore: unnecessary_null_comparison
+          if (userData != null) {
+            print(userData.user!.phoneNumber);
+            setState(() {
+              isLoading = false;
+            });
+            // Navigate to home Screen
+          }
+        });
+      }, 
+      verificationFailed: (FirebaseAuthException error) {
+        print("firebase Error : ${error.message}");
+      },
+      codeSent: (String verificationId, int? resendToken) {
+        setState(() {
+          isLoading = false;
+          isOTPscreen = true;
+          verificationCode = verificationId;
+        });
+      }, 
+      codeAutoRetrievalTimeout: (String verificationId){
+        setState(() {
+          isLoading = false;
+          verificationCode = verificationId;
+        });
+      }, timeout: Duration(seconds: 120)
+    );
+  }
+
+  Future otpSignIn() async {
+    setState(() {
+      isLoading = true;
+    });
+    try{
+      _firebaseAuth.signInWithCredential(
+        PhoneAuthProvider.credential(
+          verificationId: verificationCode,
+          smsCode: otpController.text.trim(),
+          )
+        ).then((userData){
+          // ignore: unnecessary_null_comparison
+          if (userData != null) {
+            setState(() {
+              isLoading = false;
+            });
+            print('Login Successful');
+            // Navigate
+          }
+        });
+    }catch(e) {}
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Scaffold(
+      body: Container(
       width: double.infinity,
       decoration: BoxDecoration(
         color: Colors.blue,
@@ -106,8 +169,9 @@ class _AuthScreenState extends State<AuthScreen> {
                     backgroundColor: MaterialStateProperty.resolveWith(
                         (states) => Theme.of(context).primaryColor)),
                 onPressed: () {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => Home()));
+                  isOTPscreen ? otpSignIn() : phoneAuth();
+                  // Navigator.push(
+                  //     context, MaterialPageRoute(builder: (_) => Home()));
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -123,7 +187,7 @@ class _AuthScreenState extends State<AuthScreen> {
             ))
           ],
         ),
-      ),
+      ),)
     );
   }
 }
