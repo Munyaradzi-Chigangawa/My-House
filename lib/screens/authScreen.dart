@@ -86,25 +86,42 @@ class _AuthScreenState extends State<AuthScreen> {
           // ignore: unnecessary_null_comparison
           if (userData != null) {
 
-            user = UserModel(
+            var userExist = await _firestore
+            .collection('users')
+            .where('phone', isEqualTo: '+263' + phoneController.text)
+            .get();
+
+            if (userExist.docs.length > 0){
+              print('User Already Exists.');
+              user = UserModel.fromMap(userExist.docs.first);
+            }else{
+              print('New user account created');
+              user = UserModel(
               name: '',
               uid: userData.user!.uid,
               invitesLeft: 10,
               phone: userData.user!.phoneNumber
             );
 
-            await _firestore.collection('users').doc(userData.user!.uid).set(UserModel().toMap(user));
+            await _firestore
+            .collection('users')
+            .doc(userData.user!.uid)
+            .set(UserModel()
+            .toMap(user));
+            }
 
-            Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
-
-            setState(() {
+             setState(() {
               isLoading = false;
             });
             print('Login Successful');
             // Navigate
+            Navigator.push(context, MaterialPageRoute(
+              builder: (context) => Home(user: user,)));
           }
         });
-    }catch(e) {}
+    }catch(e) {
+      print(e.toString());
+    }
   }
 
   @override
