@@ -1,16 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class UserModel {
-  late String name;
-  late String uid;
-  late String? phone;
-  late int invitesLeft;
+  String? name;
+  String? uid;
+  String? phone;
+  int? invitesLeft;
 
   UserModel({
-    required this.name,
-    required this.invitesLeft,
-    required this.phone,
-    required this.uid});
+    this.name,
+    this.invitesLeft,
+    this.phone,
+    this.uid});
 
   factory UserModel.fromMap(QueryDocumentSnapshot documentSnapshot){
     return UserModel(
