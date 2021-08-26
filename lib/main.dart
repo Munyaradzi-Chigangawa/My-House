@@ -42,7 +42,7 @@ class AuthenticateUser extends StatelessWidget {
         UserModel user = UserModel.fromMap(userExist.docs.first);
         return Home(user: user);
       } else {
-        return AuthScreen();
+        return AuthenticateUser();
       }
     }
 
