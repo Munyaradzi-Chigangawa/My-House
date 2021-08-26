@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:my_house/main.dart';
 import 'package:my_house/models/userModel.dart';
+import 'package:my_house/screens/invite.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key, required this.user}) : super(key: key);
@@ -31,7 +32,10 @@ class _HomeState extends State<Home> {
             ListTile(
               leading: Icon(Icons.share),
               title: Text('Invite'),
-              onTap: () {},
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Invite()));
+              },
             ),
           ],
         ),
