@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:my_house/models/userModel.dart';
 import 'package:my_house/screens/home.dart';
 
 class AuthScreen extends StatefulWidget {
@@ -79,8 +80,18 @@ class _AuthScreenState extends State<AuthScreen> {
           smsCode: otpController.text.trim(),
           )
         ).then((userData){
+          UserModel user;
+
           // ignore: unnecessary_null_comparison
           if (userData != null) {
+
+            user = UserModel(
+              name: '',
+              uid: userData.user!.uid,
+              invitesLeft: 10,
+              phone: userData.user!.phoneNumber
+            );
+
             setState(() {
               isLoading = false;
             });
