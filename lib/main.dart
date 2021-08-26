@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: AuthScreen(),
+      home: AuthenticateUser(),
     );
   }
 }
@@ -42,7 +42,7 @@ class AuthenticateUser extends StatelessWidget {
         UserModel user = UserModel.fromMap(userExist.docs.first);
         return Home(user: user);
       } else {
-        return AuthenticateUser();
+        return AuthScreen();
       }
     }
 
