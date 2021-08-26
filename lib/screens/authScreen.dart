@@ -79,7 +79,8 @@ class _AuthScreenState extends State<AuthScreen> {
           verificationId: verificationCode,
           smsCode: otpController.text.trim(),
           )
-        ).then((userData){
+        ).then((userData) async {
+          
           UserModel user;
 
           // ignore: unnecessary_null_comparison
@@ -91,6 +92,8 @@ class _AuthScreenState extends State<AuthScreen> {
               invitesLeft: 10,
               phone: userData.user!.phoneNumber
             );
+
+            await _firestore.collection('users').doc(userData.user!.uid).set(UserModel().toMap(user));
 
             setState(() {
               isLoading = false;
