@@ -1,6 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:my_house/models/userModel.dart';
 import 'package:my_house/screens/authScreen.dart';
+import 'package:my_house/screens/home.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,6 +23,33 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: AuthScreen(),
+    );
+  }
+}
+
+class AuthenticateUser extends StatelessWidget {
+
+    final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+
+    Future chechCurrentUser() async {
+      if (_firebaseAuth.currentUser != null){
+        var userExist = await FirebaseFirestore.instance
+        .collection('users')
+        .where('uid', 
+        isEqualTo: _firebaseAuth.currentUser!.uid)
+        .get();
+
+        UserModel user = UserModel.fromMap(userExist.docs.first);
+        return Home(user: user);
+      } else {
+        return AuthScreen();
+      }
+    }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      
     );
   }
 }
