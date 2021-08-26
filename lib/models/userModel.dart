@@ -20,4 +20,11 @@ class UserModel {
       uid: documentSnapshot['uid'],
     );
   }
+
+  Map<String, dynamic> toMap(UserModel user) => {
+    'name': user.name,
+    'uid': user.uid,
+    'phone': user.phone,
+    'invitesLeft': user.invitesLeft
+  };
 }
