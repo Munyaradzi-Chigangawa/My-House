@@ -55,7 +55,7 @@ class AuthenticateUser extends StatelessWidget {
           return Container(
             color: Colors.blue,
             child: Center(
-              child: CircularProgressIndicator(),
+              child: CircularProgressIndicator(backgroundColor: Colors.white,),
             ),
           );
         } else {
