@@ -95,6 +95,8 @@ class _AuthScreenState extends State<AuthScreen> {
 
             await _firestore.collection('users').doc(userData.user!.uid).set(UserModel().toMap(user));
 
+            Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
+
             setState(() {
               isLoading = false;
             });
