@@ -91,7 +91,7 @@ class _InviteState extends State<Invite> {
               ),
             ),
             SizedBox(height: 30,),
-            Container(
+            isLoading ? CircularProgressIndicator() : Container(
               height: 50,
               width: 250,
               decoration: BoxDecoration(
