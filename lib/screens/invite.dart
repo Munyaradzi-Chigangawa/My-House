@@ -1,9 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:my_house/models/userModel.dart';
 
 
 class Invite extends StatefulWidget {
-  const Invite({ Key? key }) : super(key: key);
+  const Invite({ Key? key, required this.user }) : super(key: key);
+  final UserModel user;
 
   @override
   _InviteState createState() => _InviteState();
@@ -12,6 +14,7 @@ class Invite extends StatefulWidget {
 class _InviteState extends State<Invite> {
   final TextEditingController inviteController = TextEditingController();
   FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  bool isLoading = false;
   
 
   @override
@@ -22,7 +25,29 @@ class _InviteState extends State<Invite> {
   }
 
   Future inviteFriends() async{
-    
+    if (inviteController.text.trim().length > 8){
+
+      setState(() {
+        isLoading = true;
+      });
+      _firestore.collection('invites')
+      .add({
+        'invitee': inviteController.text,
+        'invitedBy': widget.user.phone,
+        'date': DateTime.now(),
+      }).then((value) {
+        int invitesLeft = widget.user.invitesLeft! - 1;
+        _firestore.collection('users').doc(widget.user.uid).update({
+          'invitesLeft' : invitesLeft,
+        }).then((value) {
+          setState(() {
+            widget.user.invitesLeft = invitesLeft;
+            isLoading = false;
+            inviteController.text = '';
+          });
+        });
+      });
+    }
   }
   @override
   Widget build(BuildContext context) {
@@ -39,7 +64,7 @@ class _InviteState extends State<Invite> {
               height: 50,
             ),
             Center(
-              child: Text('10',
+              child: Text('${widget.user.invitesLeft}',
               style: TextStyle(
                 fontSize: 30,
               ), 
