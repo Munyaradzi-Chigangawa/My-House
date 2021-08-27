@@ -99,7 +99,7 @@ class _InviteState extends State<Invite> {
                 borderRadius: BorderRadius.circular(20),
               ),
               child: TextButton(onPressed: () {
-
+                inviteFriends();
               }, 
               child: Text('Send Invite', 
               style: TextStyle(
