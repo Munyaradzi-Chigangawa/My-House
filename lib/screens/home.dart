@@ -34,7 +34,7 @@ class _HomeState extends State<Home> {
               title: Text('Invite'),
               onTap: () {
                 Navigator.pop(context);
-                Navigator.push(context, MaterialPageRoute(builder: (context) => Invite()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Invite(user: widget.user)));
               },
             ),
           ],
