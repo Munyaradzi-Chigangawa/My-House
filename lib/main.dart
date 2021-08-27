@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:my_house/models/userModel.dart';
 import 'package:my_house/screens/authScreen.dart';
 import 'package:my_house/screens/home.dart';
+import 'screens/notInvited.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,7 +33,19 @@ class AuthenticateUser extends StatelessWidget {
     final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
     Future chechCurrentUser() async {
+      
       if (_firebaseAuth.currentUser != null){
+
+         var userInvited = await FirebaseFirestore.instance
+             .collection('invites')
+             .where('invitee', 
+             isEqualTo: _firebaseAuth.currentUser!.phoneNumber)
+             .get();
+
+             if (userInvited.docs.length < 1){
+               return Notinvited();
+             }
+
         var userExist = await FirebaseFirestore.instance
         .collection('users')
         .where('uid', 
