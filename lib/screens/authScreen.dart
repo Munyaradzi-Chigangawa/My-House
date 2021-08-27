@@ -28,7 +28,7 @@ class _AuthScreenState extends State<AuthScreen> {
     super.dispose();
   }
   Future phoneAuth() async {
-    var _phoneNumber = "+263" + phoneController.text.trim(); 
+    var _phoneNumber = phoneController.text.trim(); 
     setState(() {
       isLoading = true;
     });
@@ -90,7 +90,7 @@ class _AuthScreenState extends State<AuthScreen> {
 
             var userExist = await _firestore
             .collection('users')
-            .where('phone', isEqualTo: '+263' + phoneController.text)
+            .where('phone', isEqualTo: phoneController.text)
             .get();
 
             if (userExist.docs.length > 0){
@@ -209,7 +209,7 @@ class _AuthScreenState extends State<AuthScreen> {
                         decoration: InputDecoration(
                             border: OutlineInputBorder(),
                             labelText: 'Enter Phone Number',
-                            hintText: 'Enter your invited phone number'),
+                            hintText: 'Enter your invited phone number with country code'),
                       ),
                     ),
                     SizedBox(height:30),
