@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 
@@ -10,6 +11,19 @@ class Invite extends StatefulWidget {
 
 class _InviteState extends State<Invite> {
   final TextEditingController inviteController = TextEditingController();
+  FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  
+
+  @override
+  void dispose() {
+    inviteController.clear();
+    inviteController.dispose();
+    super.dispose();
+  }
+
+  Future inviteFriends() async{
+    
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
