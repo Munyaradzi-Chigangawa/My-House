@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:my_house/models/userModel.dart';
 import 'package:my_house/screens/home.dart';
 
+import 'notInvited.dart';
+
 class AuthScreen extends StatefulWidget {
   const AuthScreen({Key? key}) : super(key: key);
 
@@ -110,7 +112,20 @@ class _AuthScreenState extends State<AuthScreen> {
             .toMap(user));
             }
 
+             var userInvited = await _firestore
+             .collection('invites')
+             .where('invitee', 
+             isEqualTo: phoneController.text)
+             .get();
+
+             if (userInvited.docs.length < 1){
+               Navigator.pushReplacement(context, MaterialPageRoute(
+                 builder: (context) => Notinvited()));
+                 return;
+             }
+
              setState(() {
+
               isLoading = false;
             });
             print('Login Successful');
