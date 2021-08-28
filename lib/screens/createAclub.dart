@@ -1,11 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-// ignore: import_of_legacy_library_into_null_safe
 import 'package:flutter_dropdown/flutter_dropdown.dart';
 import 'package:my_house/models/userModel.dart';
 
 class CreateAClub extends StatefulWidget {
-  const CreateAClub({ Key? key, required this.user }) : super(key: key);
+  const CreateAClub({Key? key, required this.user}) : super(key: key);
   final UserModel user;
 
   @override
@@ -13,14 +12,13 @@ class CreateAClub extends StatefulWidget {
 }
 
 class _CreateAClubState extends State<CreateAClub> {
-
-  final GlobalKey <FormState> _formKey = GlobalKey <FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   TextEditingController _titleController = TextEditingController();
-  List <String> categories = [];
-  String selectedCategory = '';
+  List<String> categories = [];
+  String selectedCategory = "";
 
   @override
-  void initState(){
+  void initState() {
     fetchCategories();
     super.initState();
   }
@@ -32,18 +30,12 @@ class _CreateAClubState extends State<CreateAClub> {
   }
 
   Future fetchCategories() async {
-    FirebaseFirestore.instance
-    .collection('categories')
-    .get()
-    .then(
-      (value) => value.docs
-      .forEach(
-        (element) {
-          categories.add(element.data()['title']);
-         }));
-         setState(() {
-           
-         });
+    FirebaseFirestore.instance.collection('categories').get().then((value) {
+      value.docs.forEach((element) {
+        categories.add(element.data()['title']);
+      });
+      setState(() {});
+    });
   }
 
   @override
@@ -53,22 +45,22 @@ class _CreateAClubState extends State<CreateAClub> {
         title: Text('Create your Club'),
       ),
       body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.all(20),
-          child: Form(
+          child: Padding(
+        padding: EdgeInsets.all(20),
+        child: Form(
             key: _formKey,
             child: Column(
               children: [
-                DropDown<String>(
+                 DropDown<String>(
                   hint: Text('Select Category'),
                   items: categories,
                   onChanged: (value) {
-                    selectedCategory = value;
+                     selectedCategory = value;
                   },
                 ),
                 SizedBox(height: 30,),
                 TextFormField(
-                  validator: (value){
+                  validator: (value) {
                     if (value == '') {
                       return "Field is required";
                     }
@@ -76,15 +68,17 @@ class _CreateAClubState extends State<CreateAClub> {
                   },
                   controller: _titleController,
                   decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: 'Enter Discussion Topic/Title'
-                  ),
+                      border: OutlineInputBorder(),
+                      hintText: 'Enter Discussion Topic/Title',
+                      labelText: 'Enter Discussion Topic/Title'),
                 ),
+                SizedBox(
+                  height: 30,
+                ),
+               
               ],
-            )
-          ),
-        )
-      ),
+            )),
+      )),
     );
   }
 }
