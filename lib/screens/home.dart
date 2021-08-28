@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:my_house/main.dart';
 import 'package:my_house/models/userModel.dart';
+import 'package:my_house/screens/createAclub.dart';
 import 'package:my_house/screens/invite.dart';
 
 class Home extends StatefulWidget {
@@ -19,7 +20,9 @@ class _HomeState extends State<Home> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        onPressed: () {},
+        onPressed: () {
+           Navigator.push(context, MaterialPageRoute(builder: (context) => CreateAClub(user: widget.user)));
+        },
       ),
       drawer: Drawer(
         child: ListView(
