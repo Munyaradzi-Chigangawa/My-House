@@ -12,6 +12,7 @@ class CreateAClub extends StatefulWidget {
 class _CreateAClubState extends State<CreateAClub> {
 
   final GlobalKey <FormState> _formKey = GlobalKey <FormState>();
+  TextEditingController _titleController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,19 @@ class _CreateAClubState extends State<CreateAClub> {
             key: _formKey,
             child: Column(
               children: [
-                
+                TextFormField(
+                  validator: (value){
+                    if (value == '') {
+                      return "Field is required";
+                    }
+                    return null;
+                  },
+                  controller: _titleController,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: 'Enter Discussion Topic/Title'
+                  ),
+                )
               ],
             )
           ),
