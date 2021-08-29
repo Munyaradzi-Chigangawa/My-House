@@ -111,7 +111,15 @@ class _CreateAClubState extends State<CreateAClub> {
                      child: Text('Add'))
                  ],
                ),
-               SizedBox()
+               SizedBox(height: 20,),
+
+                ...speakers.map((user){
+                  return ListTile(
+                    leading: Icon(Icons.person),
+                    title: Text(user),
+                  );
+                })
+
               ],
             )),
       )),
