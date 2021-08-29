@@ -91,7 +91,12 @@ class _CreateAClubState extends State<CreateAClub> {
                      onPressed: () {
                        FirebaseFirestore.instance.collection('users').where('phone', isEqualTo: _speakerController.text).get().then((value){
                          if (value.docs.length > 0){
+                           speakers.add(_speakerController.text);
 
+                           _speakerController.text = '';
+                           setState(() {
+                             
+                           });
                          } else {
                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                              backgroundColor: Colors.black,
@@ -105,7 +110,8 @@ class _CreateAClubState extends State<CreateAClub> {
                      }, 
                      child: Text('Add'))
                  ],
-               )
+               ),
+               SizedBox()
               ],
             )),
       )),
