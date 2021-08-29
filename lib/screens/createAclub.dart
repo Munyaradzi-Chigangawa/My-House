@@ -14,12 +14,13 @@ class CreateAClub extends StatefulWidget {
 class _CreateAClubState extends State<CreateAClub> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   TextEditingController _titleController = TextEditingController();
+  TextEditingController _speakerController = TextEditingController();
   List<String> categories = [];
   String selectedCategory = "";
 
   @override
   void initState() {
-    fetchCategories();
+  fetchCategories();
     super.initState();
   }
 
@@ -73,9 +74,25 @@ class _CreateAClubState extends State<CreateAClub> {
                       labelText: 'Enter Discussion Topic/Title'),
                 ),
                 SizedBox(
-                  height: 30,
+                  height: 20,
                 ),
-               
+               Row(
+                 children: [
+                   Expanded(child: TextField(
+                     keyboardType: TextInputType.phone,
+                     controller: _speakerController,
+                     decoration: InputDecoration(
+                       border: OutlineInputBorder(),
+                       hintText: 'Invite Speakers (Optional)',
+                       helperText: 'eg : +26377*******'
+                     ),
+                   )),
+                   SizedBox(width: 10,),
+                   ElevatedButton(
+                     onPressed: () {}, 
+                     child: Text('Add'))
+                 ],
+               )
               ],
             )),
       )),
