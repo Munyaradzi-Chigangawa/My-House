@@ -129,8 +129,19 @@ class _CreateAClubState extends State<CreateAClub> {
                   onDateTimeChanged: (DateTime dateTime){
                     print(dateTime);
                   },
-                ),)
-
+                ),),
+                SizedBox(height: 30,),
+                Row(
+                  children: [
+                    Expanded(
+                      child: ElevatedButton(
+                        onPressed: () {}, 
+                      child: Text('Create', 
+                      style: TextStyle(color: Colors.white),
+                      )),
+                    ),
+                  ],
+                )
               ],
             )),
       )),
