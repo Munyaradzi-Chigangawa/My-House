@@ -88,7 +88,21 @@ class _CreateAClubState extends State<CreateAClub> {
                    )),
                    SizedBox(width: 10,),
                    ElevatedButton(
-                     onPressed: () {}, 
+                     onPressed: () {
+                       FirebaseFirestore.instance.collection('users').where('phone', isEqualTo: _speakerController.text).get().then((value){
+                         if (value.docs.length > 0){
+
+                         } else {
+                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                             backgroundColor: Colors.black,
+                             content: Text('No User Found',
+                           style: TextStyle(
+                             color: Colors.white,
+                           ),
+                           )));
+                         }
+                       });
+                     }, 
                      child: Text('Add'))
                  ],
                )
