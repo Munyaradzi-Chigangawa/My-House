@@ -16,6 +16,7 @@ class _CreateAClubState extends State<CreateAClub> {
   TextEditingController _titleController = TextEditingController();
   TextEditingController _speakerController = TextEditingController();
   List<String> categories = [];
+    List<String> speakers = [];
   String selectedCategory = "";
 
   @override
@@ -52,14 +53,6 @@ class _CreateAClubState extends State<CreateAClub> {
             key: _formKey,
             child: Column(
               children: [
-                 DropDown<String>(
-                  hint: Text('Select Category'),
-                  items: categories,
-                  onChanged: (value) {
-                     selectedCategory = value;
-                  },
-                ),
-                SizedBox(height: 30,),
                 TextFormField(
                   validator: (value) {
                     if (value == '') {
@@ -73,9 +66,15 @@ class _CreateAClubState extends State<CreateAClub> {
                       hintText: 'Enter Discussion Topic/Title',
                       labelText: 'Enter Discussion Topic/Title'),
                 ),
-                SizedBox(
-                  height: 20,
+                SizedBox(height: 30,),
+                 DropDown<String>(
+                  hint: Text('Select Category'),
+                  items: categories,
+                  onChanged: (value) {
+                     selectedCategory = value;
+                  },
                 ),
+                SizedBox(height: 20,),
                Row(
                  children: [
                    Expanded(child: TextField(
