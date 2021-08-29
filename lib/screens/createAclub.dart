@@ -99,7 +99,7 @@ class _CreateAClubState extends State<CreateAClub> {
                            });
                          } else {
                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                             backgroundColor: Colors.black,
+                             backgroundColor: Colors.redAccent,
                              content: Text('No User Found',
                            style: TextStyle(
                              color: Colors.white,
