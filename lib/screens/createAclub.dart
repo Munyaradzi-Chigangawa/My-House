@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dropdown/flutter_dropdown.dart';
 import 'package:my_house/models/userModel.dart';
@@ -119,7 +120,16 @@ class _CreateAClubState extends State<CreateAClub> {
                     leading: Icon(Icons.person),
                     title: Text(user),
                   );
-                })
+                }),
+                Text('Select Date and Time', style: TextStyle(),),
+                SizedBox(height: 180,
+                child: CupertinoDatePicker(
+                  initialDateTime: DateTime.now(),
+                  mode: CupertinoDatePickerMode.dateAndTime,
+                  onDateTimeChanged: (DateTime dateTime){
+                    print(dateTime);
+                  },
+                ),)
 
               ],
             )),
