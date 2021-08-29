@@ -17,7 +17,7 @@ class _CreateAClubState extends State<CreateAClub> {
   TextEditingController _titleController = TextEditingController();
   TextEditingController _speakerController = TextEditingController();
   List<String> categories = [];
-    List<String> speakers = [];
+    List<Map> speakers = [];
   String selectedCategory = "";
 
   @override
@@ -93,12 +93,16 @@ class _CreateAClubState extends State<CreateAClub> {
                      onPressed: () {
                        FirebaseFirestore.instance.collection('users').where('phone', isEqualTo: _speakerController.text).get().then((value){
                          if (value.docs.length > 0){
-                           speakers.add(_speakerController.text);
+                           speakers.add({
+                             'name':value.docs.first.data()['name'],
+                             'phone': _speakerController.text,
+                           });
 
                            _speakerController.text = '';
                            setState(() {
                              
                            });
+
                          } else {
                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                              backgroundColor: Colors.redAccent,
@@ -116,9 +120,12 @@ class _CreateAClubState extends State<CreateAClub> {
                SizedBox(height: 20,),
 
                 ...speakers.map((user){
+                  var name  = user.values.first;
+                  var phone = user.values.last;
                   return ListTile(
                     leading: Icon(Icons.person),
-                    title: Text(user),
+                    title: Text(name),
+                    subtitle: Text(phone),
                   );
                 }),
                 Text('Select Date and Time', style: TextStyle(),),
