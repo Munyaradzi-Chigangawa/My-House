@@ -83,6 +83,7 @@ class _CreateAClubState extends State<CreateAClub> {
                      decoration: InputDecoration(
                        border: OutlineInputBorder(),
                        hintText: 'Invite Speakers (Optional)',
+                       labelText: 'Invite Speakers (Optional)',
                        helperText: 'eg : +26377*******'
                      ),
                    )),
