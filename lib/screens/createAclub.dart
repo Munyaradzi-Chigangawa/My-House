@@ -150,6 +150,13 @@ class _CreateAClubState extends State<CreateAClub> {
                       });
                       Text('Private', style: TextStyle(fontSize:  16),);
                     }
+                    ),
+                    Radio(value: 'Private', groupValue: type, onChanged: (value){
+                      setState(() {
+                        //type = value;
+                      });
+                      Text('Private', style: TextStyle(fontSize:  16),);
+                    }
                     )
                   ],
                 ),
