@@ -17,9 +17,11 @@ class _CreateAClubState extends State<CreateAClub> {
   TextEditingController _titleController = TextEditingController();
   TextEditingController _speakerController = TextEditingController();
   List<String> categories = [];
-    List<Map> speakers = [];
+  List<Map> speakers = [];
   String selectedCategory = "";
-  DateTime _dateTime;
+  late DateTime _dateTime;
+  String type = "Private";
+
 
   @override
   void initState() {
@@ -138,6 +140,19 @@ class _CreateAClubState extends State<CreateAClub> {
                    _dateTime = dateTime;
                   },
                 ),),
+                SizedBox(height: 15,),
+                Row(
+                  children: [
+                    Text('Discussion Type: '),
+                    Radio(value: 'Private', groupValue: type, onChanged: (value){
+                      setState(() {
+                        //type = value;
+                      });
+                      Text('Private', style: TextStyle(fontSize:  16),);
+                    }
+                    )
+                  ],
+                ),
                 SizedBox(height: 30,),
                 Row(
                   children: [
