@@ -1,3 +1,5 @@
+import 'dart:js';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -165,7 +167,11 @@ class _CreateAClubState extends State<CreateAClub> {
                   children: [
                     Expanded(
                       child: ElevatedButton(
-                        onPressed: () {}, 
+                        onPressed: () async {
+                          if (selectedCategory == '') {
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(backgroundColor: Colors.redAccent,content: Text('Select a categoty', style: TextStyle(color: Colors.white),),));
+                          }
+                        }, 
                       child: Text('Create', 
                       style: TextStyle(color: Colors.white),
                       )),
