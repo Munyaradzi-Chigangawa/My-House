@@ -206,6 +206,7 @@ class _CreateAClubState extends State<CreateAClub> {
                                   style: TextStyle(color: Colors.white),
                                 ),
                               ));
+                              return;
                             }
                           },
                           child: Text(
