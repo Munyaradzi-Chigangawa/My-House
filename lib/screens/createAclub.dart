@@ -24,10 +24,9 @@ class _CreateAClubState extends State<CreateAClub> {
   late DateTime _dateTime;
   String type = "Private";
 
-
   @override
   void initState() {
-  fetchCategories();
+    fetchCategories();
     super.initState();
   }
 
@@ -72,60 +71,71 @@ class _CreateAClubState extends State<CreateAClub> {
                       hintText: 'Enter Discussion Topic/Title',
                       labelText: 'Enter Discussion Topic/Title'),
                 ),
-                SizedBox(height: 30,),
-                 DropDown<String>(
+                SizedBox(
+                  height: 30,
+                ),
+                DropDown<String>(
                   hint: Text('Select Category'),
                   items: categories,
                   onChanged: (value) {
-                     selectedCategory = value;
+                    selectedCategory = value;
                   },
                 ),
-                SizedBox(height: 20,),
-               Row(
-                 children: [
-                   Expanded(child: TextField(
-                     keyboardType: TextInputType.phone,
-                     controller: _speakerController,
-                     decoration: InputDecoration(
-                       border: OutlineInputBorder(),
-                       hintText: 'Invite Speakers (Optional)',
-                       labelText: 'Invite Speakers (Optional)',
-                       helperText: 'eg : +26377*******'
-                     ),
-                   )),
-                   SizedBox(width: 10,),
-                   ElevatedButton(
-                     onPressed: () {
-                       FirebaseFirestore.instance.collection('users').where('phone', isEqualTo: _speakerController.text).get().then((value){
-                         if (value.docs.length > 0){
-                           speakers.add({
-                             'name':value.docs.first.data()['name'],
-                             'phone': _speakerController.text,
-                           });
+                SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                        child: TextField(
+                      keyboardType: TextInputType.phone,
+                      controller: _speakerController,
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          hintText: 'Invite Speakers (Optional)',
+                          labelText: 'Invite Speakers (Optional)',
+                          helperText: 'eg : +26377*******'),
+                    )),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    ElevatedButton(
+                        onPressed: () {
+                          FirebaseFirestore.instance
+                              .collection('users')
+                              .where('phone',
+                                  isEqualTo: _speakerController.text)
+                              .get()
+                              .then((value) {
+                            if (value.docs.length > 0) {
+                              speakers.add({
+                                'name': value.docs.first.data()['name'],
+                                'phone': _speakerController.text,
+                              });
 
-                           _speakerController.text = '';
-                           setState(() {
-                             
-                           });
-
-                         } else {
-                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                             backgroundColor: Colors.redAccent,
-                             content: Text('No User Found',
-                           style: TextStyle(
-                             color: Colors.white,
-                           ),
-                           )));
-                         }
-                       });
-                     }, 
-                     child: Text('Add'))
-                 ],
-               ),
-               SizedBox(height: 20,),
-
-                ...speakers.map((user){
-                  var name  = user.values.first;
+                              _speakerController.text = '';
+                              setState(() {});
+                            } else {
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                      backgroundColor: Colors.redAccent,
+                                      content: Text(
+                                        'No User Found',
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                        ),
+                                      )));
+                            }
+                          });
+                        },
+                        child: Text('Add'))
+                  ],
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                ...speakers.map((user) {
+                  var name = user.values.first;
                   var phone = user.values.last;
                   return ListTile(
                     leading: Icon(Icons.person),
@@ -133,48 +143,75 @@ class _CreateAClubState extends State<CreateAClub> {
                     subtitle: Text(phone),
                   );
                 }),
-                Text('Select Date and Time', style: TextStyle(),),
-                SizedBox(height: 180,
-                child: CupertinoDatePicker(
-                  initialDateTime: DateTime.now(),
-                  mode: CupertinoDatePickerMode.dateAndTime,
-                  onDateTimeChanged: (DateTime dateTime){
-                   _dateTime = dateTime;
-                  },
-                ),),
-                SizedBox(height: 15,),
+                Text(
+                  'Select Date and Time',
+                  style: TextStyle(),
+                ),
+                SizedBox(
+                  height: 180,
+                  child: CupertinoDatePicker(
+                    initialDateTime: DateTime.now(),
+                    mode: CupertinoDatePickerMode.dateAndTime,
+                    onDateTimeChanged: (DateTime dateTime) {
+                      _dateTime = dateTime;
+                    },
+                  ),
+                ),
+                SizedBox(
+                  height: 15,
+                ),
                 Row(
                   children: [
                     Text('Discussion Type: '),
-                    Radio(value: 'Private', groupValue: type, onChanged: (value){
-                      setState(() {
-                        //type = value;
-                      });
-                      Text('Private', style: TextStyle(fontSize:  16),);
-                    }
-                    ),
-                    Radio(value: 'Public', groupValue: type, onChanged: (value){
-                      setState(() {
-                        //type = value;
-                      });
-                      Text('Public', style: TextStyle(fontSize:  16),);
-                    }
-                    )
+                    Radio(
+                        value: 'Private',
+                        groupValue: type,
+                        onChanged: (value) {
+                          setState(() {
+                            //type = value;
+                          });
+                          Text(
+                            'Private',
+                            style: TextStyle(fontSize: 16),
+                          );
+                        }),
+                    Radio(
+                        value: 'Public',
+                        groupValue: type,
+                        onChanged: (value) {
+                          setState(() {
+                            //type = value;
+                          });
+                          Text(
+                            'Public',
+                            style: TextStyle(fontSize: 16),
+                          );
+                        })
                   ],
                 ),
-                SizedBox(height: 30,),
+                SizedBox(
+                  height: 30,
+                ),
                 Row(
                   children: [
                     Expanded(
                       child: ElevatedButton(
-                        onPressed: () async {
-                          if (selectedCategory == '') {
-                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(backgroundColor: Colors.redAccent,content: Text('Select a categoty', style: TextStyle(color: Colors.white),),));
-                          }
-                        }, 
-                      child: Text('Create', 
-                      style: TextStyle(color: Colors.white),
-                      )),
+                          onPressed: () async {
+                            if (selectedCategory == '') {
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                backgroundColor: Colors.redAccent,
+                                content: Text(
+                                  'Select a category',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ));
+                            }
+                          },
+                          child: Text(
+                            'Create',
+                            style: TextStyle(color: Colors.white),
+                          )),
                     ),
                   ],
                 )
