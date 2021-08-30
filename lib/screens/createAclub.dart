@@ -19,6 +19,7 @@ class _CreateAClubState extends State<CreateAClub> {
   List<String> categories = [];
     List<Map> speakers = [];
   String selectedCategory = "";
+  DateTime _dateTime;
 
   @override
   void initState() {
@@ -134,7 +135,7 @@ class _CreateAClubState extends State<CreateAClub> {
                   initialDateTime: DateTime.now(),
                   mode: CupertinoDatePickerMode.dateAndTime,
                   onDateTimeChanged: (DateTime dateTime){
-                    print(dateTime);
+                   _dateTime = dateTime;
                   },
                 ),),
                 SizedBox(height: 30,),
