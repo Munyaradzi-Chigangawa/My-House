@@ -25,7 +25,16 @@ class Profile extends StatelessWidget {
             SizedBox(height: 20,),
             TextField(
               controller: _nameController,
-            )
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                hintText: 'Enter your Full Name...'
+              ),
+            ),
+            SizedBox(height: 20,),
+            ElevatedButton(onPressed: (){
+              
+            }, 
+            child: Text('Update'))
           ],
         ),
       ),
