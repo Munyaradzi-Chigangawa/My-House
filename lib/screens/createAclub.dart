@@ -1,5 +1,3 @@
-import 'dart:js';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -208,11 +206,23 @@ class _CreateAClubState extends State<CreateAClub> {
                               ));
                               return;
                             }
-                            if (_formKey.currentState.validate()){
-                              _formKey.currentState.save();
+                            if(_formKey.currentState!.validate()){
+                              _formKey.currentState!.save();
                               speakers.insert(0,{
                                 'name' : widget.user.name,
                                 'phone' : widget.user.phone,
+                              });
+
+                              await FirebaseFirestore.instance.collection('clubs').add({
+                                'title' : _titleController.text,
+                                'category' : selectedCategory,
+                                'createdBy' : widget.user.phone,
+                                'invited' : speakers,
+                                'createdOn' : DateTime.now(),
+                                'dateTime': _dateTime,
+                                'type' : type,
+                                'status' : 'new' // new,ongoing,finished,cancelled
+
                               });
                             }
                           },
