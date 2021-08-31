@@ -32,7 +32,9 @@ class _HomeState extends State<Home> {
             ListTile(
               leading: Icon(Icons.home),
               title: Text('Home'),
-              onTap: () {},
+              onTap: () {
+                Navigator.pop(context);
+              },
             ),
             Divider(),
             ListTile(
