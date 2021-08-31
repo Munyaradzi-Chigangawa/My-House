@@ -46,8 +46,12 @@ class _CreateAClubState extends State<CreateAClub> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xfff1efe5),
       appBar: AppBar(
-        title: Text('Create your Club'),
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
+        iconTheme: IconThemeData(color: Colors.black),
+        title: Text('Create your Club', style: TextStyle(color: Colors.black),),
       ),
       body: SingleChildScrollView(
           child: Padding(
