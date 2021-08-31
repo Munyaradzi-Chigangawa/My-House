@@ -222,8 +222,8 @@ class _CreateAClubState extends State<CreateAClub> {
                                 'dateTime': _dateTime,
                                 'type' : type,
                                 'status' : 'new' // new,ongoing,finished,cancelled
-
                               });
+                              Navigator.pop(context);
                             }
                           },
                           child: Text(
