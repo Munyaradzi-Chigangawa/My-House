@@ -6,6 +6,7 @@ class Profile extends StatelessWidget {
   final UserModel user;
   @override
   Widget build(BuildContext context) {
+    final TextEditingController _nameController = TextEditingController(text: user.name);
     return Scaffold(
         backgroundColor: Color(0xfff1efe5),
       appBar: AppBar(
@@ -17,7 +18,14 @@ class Profile extends StatelessWidget {
         padding: EdgeInsets.all(30),
         child: Column(
           children: [
-            
+            CircleAvatar(
+              radius: 50,
+              child: Icon(Icons.person, size: 50,),
+            ),
+            SizedBox(height: 20,),
+            TextField(
+              controller: _nameController,
+            )
           ],
         ),
       ),
