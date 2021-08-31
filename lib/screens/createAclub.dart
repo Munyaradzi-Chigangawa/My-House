@@ -51,7 +51,10 @@ class _CreateAClubState extends State<CreateAClub> {
         backgroundColor: Colors.transparent,
         elevation: 0.0,
         iconTheme: IconThemeData(color: Colors.black),
-        title: Text('Create your Club', style: TextStyle(color: Colors.black),),
+        title: Text(
+          'Create your Club',
+          style: TextStyle(color: Colors.black),
+        ),
       ),
       body: SingleChildScrollView(
           child: Padding(
@@ -173,10 +176,10 @@ class _CreateAClubState extends State<CreateAClub> {
                             type = value!;
                           });
                         }),
-                        Text(
-                            'Private',
-                            style: TextStyle(fontSize: 16),
-                          ),
+                    Text(
+                      'Private',
+                      style: TextStyle(fontSize: 16),
+                    ),
                     Radio(
                         value: 'Public',
                         groupValue: type,
@@ -185,10 +188,10 @@ class _CreateAClubState extends State<CreateAClub> {
                             type = value!;
                           });
                         }),
-                        Text(
-                            'Public',
-                            style: TextStyle(color:Colors.black,fontSize: 16),
-                          ),
+                    Text(
+                      'Public',
+                      style: TextStyle(color: Colors.black, fontSize: 16),
+                    ),
                   ],
                 ),
                 SizedBox(
@@ -210,22 +213,25 @@ class _CreateAClubState extends State<CreateAClub> {
                               ));
                               return;
                             }
-                            if(_formKey.currentState!.validate()){
+                            if (_formKey.currentState!.validate()) {
                               _formKey.currentState!.save();
-                              speakers.insert(0,{
-                                'name' : widget.user.name,
-                                'phone' : widget.user.phone,
+                              speakers.insert(0, {
+                                'name': widget.user.name,
+                                'phone': widget.user.phone,
                               });
 
-                              await FirebaseFirestore.instance.collection('clubs').add({
-                                'title' : _titleController.text,
-                                'category' : selectedCategory,
-                                'createdBy' : widget.user.phone,
-                                'invited' : speakers,
-                                'createdOn' : DateTime.now(),
+                              await FirebaseFirestore.instance
+                                  .collection('clubs')
+                                  .add({
+                                'title': _titleController.text,
+                                'category': selectedCategory,
+                                'createdBy': widget.user.phone,
+                                'invited': speakers,
+                                'createdOn': DateTime.now(),
                                 'dateTime': _dateTime,
-                                'type' : type,
-                                'status' : 'new' // new,ongoing,finished,cancelled
+                                'type': type,
+                                'status':
+                                    'new' // new,ongoing,finished,cancelled
                               });
                               Navigator.pop(context);
                             }
