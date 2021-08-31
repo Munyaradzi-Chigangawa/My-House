@@ -208,6 +208,13 @@ class _CreateAClubState extends State<CreateAClub> {
                               ));
                               return;
                             }
+                            if (_formKey.currentState.validate()){
+                              _formKey.currentState.save();
+                              speakers.insert(0,{
+                                'name' : widget.user.name,
+                                'phone' : widget.user.phone,
+                              });
+                            }
                           },
                           child: Text(
                             'Create',
