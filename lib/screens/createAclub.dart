@@ -168,27 +168,27 @@ class _CreateAClubState extends State<CreateAClub> {
                     Radio(
                         value: 'Private',
                         groupValue: type,
-                        onChanged: (value) {
+                        onChanged: (String? value) {
                           setState(() {
-                            //type = value;
+                            type = value!;
                           });
-                          Text(
+                        }),
+                        Text(
                             'Private',
                             style: TextStyle(fontSize: 16),
-                          );
-                        }),
+                          ),
                     Radio(
                         value: 'Public',
                         groupValue: type,
-                        onChanged: (value) {
+                        onChanged: (String? value) {
                           setState(() {
-                            //type = value;
+                            type = value!;
                           });
-                          Text(
+                        }),
+                        Text(
                             'Public',
-                            style: TextStyle(fontSize: 16),
-                          );
-                        })
+                            style: TextStyle(color:Colors.black,fontSize: 16),
+                          ),
                   ],
                 ),
                 SizedBox(
