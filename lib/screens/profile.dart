@@ -1,5 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:my_house/models/userModel.dart';
+
+import 'home.dart';
 
 class Profile extends StatelessWidget {
   const Profile({ Key? key, required this.user }) : super(key: key);
@@ -32,7 +35,14 @@ class Profile extends StatelessWidget {
             ),
             SizedBox(height: 20,),
             ElevatedButton(onPressed: (){
-              
+              if (_nameController.text != ''){
+                FirebaseFirestore.instance.collection('users').doc(user.uid).update({
+                  'name': _nameController.text,
+              }).then((value) {
+                user.name = _nameController.text;
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Home(user: user) ));
+              });
+              }
             }, 
             child: Text('Update'))
           ],
