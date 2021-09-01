@@ -81,7 +81,7 @@ class _CreateAClubState extends State<CreateAClub> {
                 ),
                 DropDown<String>(
                   hint: Text('Select Category'),
-                  items: ['IT', 'Health Care', 'Business', 'Travelling'],
+                  items: ['IT', 'Health Care', 'Business', 'Travelling', 'Lifestyle'],
                   onChanged: (value) {
                     selectedCategory = value;
                   },
