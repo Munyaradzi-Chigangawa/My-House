@@ -19,7 +19,7 @@ class _HomeState extends State<Home> {
   @override
   void initState() {
     if(widget.user.name == ''){
-      Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) => Profile(user: widget.user,)));
+     Future.microtask(() => Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) => Profile(user: widget.user,))));
     }
     super.initState();
   }
