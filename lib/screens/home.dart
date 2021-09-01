@@ -29,6 +29,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       backgroundColor: Color(0xfff1efe5),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.green,
         child: Icon(Icons.add),
         onPressed: () {
            Navigator.push(context, MaterialPageRoute(builder: (context) => CreateAClub(user: widget.user)));
