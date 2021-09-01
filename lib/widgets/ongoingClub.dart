@@ -64,7 +64,6 @@ class OngoingClub extends StatelessWidget {
                   ))
             ],
           ),
-          Divider(),
         ],
       ),
     );
