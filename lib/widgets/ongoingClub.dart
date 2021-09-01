@@ -29,7 +29,8 @@ class OngoingClub extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   ))
             ],
-          )
+          ),
+          Divider()
         ],
       ),
     );
