@@ -40,7 +40,7 @@ class Profile extends StatelessWidget {
                   'name': _nameController.text,
               }).then((value) {
                 user.name = _nameController.text;
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Home(user: user) ));
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Home(user: user)));
               });
               }
             }, 
