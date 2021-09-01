@@ -83,7 +83,9 @@ class _HomeState extends State<Home> {
       ),
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.black),
-        title: Text('Home'),
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
+        title: Text('Home', style: TextStyle(color: Colors.black,)),
         actions: [
           IconButton(
               onPressed: () async{
