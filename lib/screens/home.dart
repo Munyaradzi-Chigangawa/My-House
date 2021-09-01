@@ -6,6 +6,7 @@ import 'package:my_house/screens/createAclub.dart';
 import 'package:my_house/screens/developer.dart';
 import 'package:my_house/screens/invite.dart';
 import 'package:my_house/screens/profile.dart';
+import 'package:my_house/widgets/ongoingClub.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key, required this.user}) : super(key: key);
@@ -101,7 +102,13 @@ class _HomeState extends State<Home> {
               icon: Icon(Icons.power_settings_new_outlined))
         ],
       ),
-      body: Container(),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            OngoingClub(),
+          ],
+        ),
+      ),
     );
   }
 }
