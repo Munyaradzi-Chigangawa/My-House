@@ -30,7 +30,41 @@ class OngoingClub extends StatelessWidget {
                   ))
             ],
           ),
-          Divider()
+          Divider(),
+          Row(
+            children: [
+              Text(
+                'time', 
+                style: TextStyle(
+                  color: Colors.green),
+                  ),
+                  SizedBox(height: 20,),
+                  Flexible(child: Text('My House', style: TextStyle(
+                    fontStyle: FontStyle.italic,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  overflow: TextOverflow.ellipsis,
+                  ))
+            ],
+          ),
+          Divider(),
+          Row(
+            children: [
+              Text(
+                'time', 
+                style: TextStyle(
+                  color: Colors.green),
+                  ),
+                  SizedBox(height: 20,),
+                  Flexible(child: Text('My House', style: TextStyle(
+                    fontStyle: FontStyle.italic,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  overflow: TextOverflow.ellipsis,
+                  ))
+            ],
+          ),
+          Divider(),
         ],
       ),
     );
