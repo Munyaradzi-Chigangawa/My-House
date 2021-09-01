@@ -5,6 +5,7 @@ import 'package:my_house/models/userModel.dart';
 import 'package:my_house/screens/createAclub.dart';
 import 'package:my_house/screens/developer.dart';
 import 'package:my_house/screens/invite.dart';
+import 'package:my_house/screens/profile.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key, required this.user}) : super(key: key);
@@ -15,6 +16,13 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  @override
+  void initState() {
+    if(widget.user.name == ''){
+      Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) => Profile(user: widget.user,)));
+    }
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
