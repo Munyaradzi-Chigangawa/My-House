@@ -82,6 +82,7 @@ class _HomeState extends State<Home> {
         ),
       ),
       appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.black),
         title: Text('Home'),
         actions: [
           IconButton(
