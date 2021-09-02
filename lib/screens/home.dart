@@ -7,6 +7,7 @@ import 'package:my_house/screens/developer.dart';
 import 'package:my_house/screens/invite.dart';
 import 'package:my_house/screens/profile.dart';
 import 'package:my_house/widgets/ongoingClub.dart';
+import 'package:my_house/widgets/upcomingClubs.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key, required this.user}) : super(key: key);
@@ -115,7 +116,8 @@ class _HomeState extends State<Home> {
             SizedBox(height: 10,),
             Icon(Icons.arrow_circle_down,
             color: Colors.black,
-            )
+            ),
+            UpcomingClubs(),
           ],
         ),
       ),
