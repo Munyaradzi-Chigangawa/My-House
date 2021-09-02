@@ -40,10 +40,12 @@ class UpcomingClubs extends StatelessWidget {
                 ),
                 SizedBox(height: 15,),
                 Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Icon(Icons.person),
                     SizedBox(width: 20,),
                     Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text('Munyaradzi Chigangawa'),
                         Text('Enhanceit Solutions'),
