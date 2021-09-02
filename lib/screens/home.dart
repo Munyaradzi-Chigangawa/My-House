@@ -112,7 +112,10 @@ class _HomeState extends State<Home> {
               fontWeight: FontWeight.bold,
             ),
             ),
-            SizedBox(height: 10,)
+            SizedBox(height: 10,),
+            Icon(Icons.arrow_circle_down,
+            color: Colors.black,
+            )
           ],
         ),
       ),
