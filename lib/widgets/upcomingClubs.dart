@@ -39,7 +39,17 @@ class UpcomingClubs extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: 15,),
-                
+                Row(
+                  children: [
+                    Icon(Icons.person),
+                    SizedBox(width: 20,),
+                    Column(
+                      children: [
+                        Text('data')
+                      ],
+                    )
+                  ],
+                )
               ],
             ),
             ),
