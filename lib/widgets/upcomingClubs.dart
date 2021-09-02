@@ -12,7 +12,11 @@ class UpcomingClubs extends StatelessWidget {
       shrinkWrap: true,
       physics: NeverScrollableScrollPhysics(),
       itemBuilder: (context, index){
-        return Container();
+        return Container(
+          margin: EdgeInsets.symmetric(
+            horizontal: 15, vertical: 5,
+          ),
+        );
       },
     );
   }
