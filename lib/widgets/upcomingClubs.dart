@@ -26,7 +26,8 @@ class UpcomingClubs extends StatelessWidget {
               children: [
                 Text('Flutter and Firebase',
                 style: TextStyle(fontSize: 18),
-                )
+                ),
+                SizedBox(height: 10,)
               ],
             ),
             ),
