@@ -20,7 +20,16 @@ class UpcomingClubs extends StatelessWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20), 
             ),
-            child: Padding(padding: EdgeInsets.all(20)),
+            child: Padding(padding: EdgeInsets.all(20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('Flutter and Firebase',
+                style: TextStyle(fontSize: 18),
+                )
+              ],
+            ),
+            ),
           ),
         );
       },
