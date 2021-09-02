@@ -45,7 +45,8 @@ class UpcomingClubs extends StatelessWidget {
                     SizedBox(width: 20,),
                     Column(
                       children: [
-                        Text('Munyaradzi Chigangawa')
+                        Text('Munyaradzi Chigangawa'),
+                        Text('Enhanceit Solutions'),
                       ],
                     )
                   ],
