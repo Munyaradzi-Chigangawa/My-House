@@ -10,20 +10,19 @@ class OngoingClub extends StatelessWidget {
       padding: EdgeInsets.all(10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: Color(0xfff1efe5)
+        color: Color(0xFFE7E4D3)
       ),
       child: Column(
         children: [
           Row(
             children: [
               Text(
-                'time', 
+                '3:00 PM', 
                 style: TextStyle(
                   color: Colors.green),
                   ),
-                  SizedBox(height: 20,),
+                  SizedBox(width: 20,),
                   Flexible(child: Text('My House', style: TextStyle(
-                    fontStyle: FontStyle.italic,
                     fontWeight: FontWeight.bold,
                   ),
                   overflow: TextOverflow.ellipsis,
@@ -34,13 +33,12 @@ class OngoingClub extends StatelessWidget {
           Row(
             children: [
               Text(
-                'time', 
+                '4:00 PM', 
                 style: TextStyle(
                   color: Colors.green),
                   ),
-                  SizedBox(height: 20,),
+                  SizedBox(width: 20,),
                   Flexible(child: Text('My House', style: TextStyle(
-                    fontStyle: FontStyle.italic,
                     fontWeight: FontWeight.bold,
                   ),
                   overflow: TextOverflow.ellipsis,
@@ -51,13 +49,12 @@ class OngoingClub extends StatelessWidget {
           Row(
             children: [
               Text(
-                'time', 
+                '5:00 PM', 
                 style: TextStyle(
                   color: Colors.green),
                   ),
-                  SizedBox(height: 20,),
+                  SizedBox(width: 20,),
                   Flexible(child: Text('My House', style: TextStyle(
-                    fontStyle: FontStyle.italic,
                     fontWeight: FontWeight.bold,
                   ),
                   overflow: TextOverflow.ellipsis,
