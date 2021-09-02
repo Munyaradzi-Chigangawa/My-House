@@ -106,6 +106,13 @@ class _HomeState extends State<Home> {
         child: Column(
           children: [
             OngoingClub(),
+            SizedBox(height: 10,),
+            Text('Upcoming Week', style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+            ),
+            SizedBox(height: 10,)
           ],
         ),
       ),
