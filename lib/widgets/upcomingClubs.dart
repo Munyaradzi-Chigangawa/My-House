@@ -29,9 +29,17 @@ class UpcomingClubs extends StatelessWidget {
                 Row(
                   children: [
                     Icon(Icons.account_tree_sharp),
-                    SizedBox(width: 5,)
+                    SizedBox(width: 5,),
+                    Text('IT'),
+                    SizedBox(width: 20,),
+                    Icon(Icons.date_range_outlined),
+                    SizedBox(width: 5,),
+                    Text('5th September 3:00 PM'),
+                    SizedBox(width: 20,)
                   ],
-                )
+                ),
+                SizedBox(height: 15,),
+                
               ],
             ),
             ),
