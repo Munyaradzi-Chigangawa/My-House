@@ -1,3 +1,5 @@
+import 'dart:js';
+
 import 'package:flutter/material.dart';
 
 class UpcomingClubs extends StatelessWidget {
@@ -9,6 +11,9 @@ class UpcomingClubs extends StatelessWidget {
       itemCount: 8,
       shrinkWrap: true,
       physics: NeverScrollableScrollPhysics(),
+      itemBuilder: (context, index){
+        return Container();
+      },
     );
   }
 }
