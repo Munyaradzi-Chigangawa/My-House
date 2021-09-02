@@ -26,6 +26,12 @@ class UpcomingClubs extends StatelessWidget {
                 style: TextStyle(fontSize: 18),
                 ),
                 SizedBox(height: 10,),
+                Row(
+                  children: [
+                    Icon(Icons.account_tree_sharp),
+                    SizedBox(width: 5,)
+                  ],
+                )
               ],
             ),
             ),
