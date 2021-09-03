@@ -1,64 +1,32 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class UpcomingClubs extends StatelessWidget {
-  const UpcomingClubs({ Key? key }) : super(key: key);
+  const UpcomingClubs({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: 8,
-      shrinkWrap: true,
-      physics: NeverScrollableScrollPhysics(),
-      itemBuilder: (context, index){
-        return Container(
-          margin: EdgeInsets.symmetric(
-            horizontal: 15, vertical: 5,
-          ),
-          child: Card(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20), 
-            ),
-            child: Padding(padding: EdgeInsets.all(20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text('Flutter and Firebase',
-                style: TextStyle(fontSize: 18),
-                ),
-                SizedBox(height: 10,),
-                Row(
-                  children: [
-                    Icon(Icons.account_tree_sharp),
-                    SizedBox(width: 5,),
-                    Text('IT'),
-                    SizedBox(width: 20,),
-                    Icon(Icons.date_range_outlined),
-                    SizedBox(width: 5,),
-                    Text('5th September 3:00 PM'),
-                    SizedBox(width: 20,)
-                  ],
-                ),
-                SizedBox(height: 15,),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Icon(Icons.person),
-                    SizedBox(width: 20,),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('Munyaradzi Chigangawa'),
-                        Text('Enhanceit Solutions'),
-                      ],
-                    )
-                  ],
-                )
-              ],
-            ),
-            ),
-          ),
-        );
-      },
-    );
+    return FutureBuilder(
+        future: FirebaseFirestore.instance
+            .collection('clubs')
+            .where('status', isEqualTo: 'new')
+            .where('dateTime',
+                isLessThan: DateTime.now().add(Duration(days: 7))).get(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            if (snapshot.data!.docs.length < 1) {
+              return Container(
+                margin: EdgeInsets.only(top: 30),
+                child: Column(),
+              );
+            }
+          }
+          return Container(
+            height: 300,
+            child: Center(
+              child: CircularProgressIndicator(),
+              ),
+          );
+        });
   }
 }
