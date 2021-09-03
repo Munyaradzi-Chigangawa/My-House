@@ -20,7 +20,7 @@ class OngoingClub extends StatelessWidget {
             .snapshots(),
         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasData) {
-            if (snapshot.data!.docs.length < 0) {
+            if (snapshot.data!.docs.length < 1) {
               return Container(
                   width: double.infinity,
                   child: Text(
