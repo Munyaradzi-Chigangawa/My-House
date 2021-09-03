@@ -23,6 +23,7 @@ dependencies:
   cloud_firestore: ^2.5.0
   flutter_dropdown: ^0.0.8
   date_time_picker: "^2.1.0"
+  intl: ^0.17.0
 
 dev_dependencies:
   flutter_test:
