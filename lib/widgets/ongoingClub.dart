@@ -22,6 +22,7 @@ class OngoingClub extends StatelessWidget {
             if (snapshot.data!.docs.length < 0) {
               return Container(
                 width: double.infinity,
+                child: Text('No ongoing club at the moment')
               );
             }
 
