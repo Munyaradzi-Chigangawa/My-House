@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class OngoingClub extends StatelessWidget {
   const OngoingClub({Key? key}) : super(key: key);
@@ -33,12 +34,13 @@ class OngoingClub extends StatelessWidget {
             return Column(
                 children: snapshot.data!.docs.map((club) {
                   DateTime dateTime = DateTime.parse(club['dateTime'].toDate().toString());
+                  var formattedTime = DateFormat.jm().format(dateTime);
               return Padding(
                 padding: EdgeInsets.only(bottom: 10),
                 child: Row(
                   children: [
                     Text(
-                      "",
+                      "$formattedTime",
                       style: TextStyle(color: Colors.green),
                     ),
                     SizedBox(
