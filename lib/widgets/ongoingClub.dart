@@ -24,7 +24,7 @@ class OngoingClub extends StatelessWidget {
               return Container(
                   width: double.infinity,
                   child: Text(
-                    'No ongoing club at the moment',
+                    'No ongoing clubs at the moment',
                     style: TextStyle(
                       color: Colors.teal,
                     ),
