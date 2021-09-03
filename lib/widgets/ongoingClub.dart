@@ -26,6 +26,7 @@ class OngoingClub extends StatelessWidget {
                 style:  TextStyle(
                   color: Colors.teal,
                 ),
+                textAlign: TextAlign.center,
                 )
               );
             }
