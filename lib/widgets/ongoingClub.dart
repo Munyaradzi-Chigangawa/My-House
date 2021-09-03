@@ -18,36 +18,42 @@ class OngoingClub extends StatelessWidget {
             .where('status', isEqualTo: 'ongoing')
             .snapshots(),
         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-          if (snapshot.hasData){
+          if (snapshot.hasData) {
             if (snapshot.data!.docs.length < 0) {
               return Container(
-                width: double.infinity,
-                child: Text('No ongoing club at the moment',
-                style:  TextStyle(
-                  color: Colors.teal,
-                ),
-                textAlign: TextAlign.center,
-                )
-              );
+                  width: double.infinity,
+                  child: Text(
+                    'No ongoing club at the moment',
+                    style: TextStyle(
+                      color: Colors.teal,
+                    ),
+                    textAlign: TextAlign.center,
+                  ));
             }
             return Column(
-        children: snapshot.data!.docs.map((club){
-          return Padding(
-            padding: EdgeInsets.only(bottom: 10),
-            child: Row(
-              children: [
-                Text("", style: TextStyle(color: Colors.green),),
-                SizedBox(width: 20,),
-                Flexible(
-                  child: Text("${club['title']}", style: TextStyle(fontWeight: FontWeight.bold),
-                  overflow: TextOverflow.ellipsis,
-                  ) 
-                  )
-              ],
-            ),
-          );
-        }).toList()
-      );
+                children: snapshot.data!.docs.map((club) {
+                  DateTime dateTime = DateTime.parse(club['dateTime'].toDate().toString());
+              return Padding(
+                padding: EdgeInsets.only(bottom: 10),
+                child: Row(
+                  children: [
+                    Text(
+                      "",
+                      style: TextStyle(color: Colors.green),
+                    ),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Flexible(
+                        child: Text(
+                      "${club['title']}",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                      overflow: TextOverflow.ellipsis,
+                    ))
+                  ],
+                ),
+              );
+            }).toList());
           }
           return LinearProgressIndicator();
         },
