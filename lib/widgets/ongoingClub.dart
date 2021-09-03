@@ -31,55 +31,16 @@ class OngoingClub extends StatelessWidget {
               );
             }
             return Column(
-        children: [
-          Row(
-            children: [
-              Text(
-                '3:00 PM', 
-                style: TextStyle(
-                  color: Colors.green),
-                  ),
-                  SizedBox(width: 20,),
-                  Flexible(child: Text('My House', style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
-                  overflow: TextOverflow.ellipsis,
-                  ))
-            ],
-          ),
-          Divider(),
-          Row(
-            children: [
-              Text(
-                '4:00 PM', 
-                style: TextStyle(
-                  color: Colors.green),
-                  ),
-                  SizedBox(width: 20,),
-                  Flexible(child: Text('My House', style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
-                  overflow: TextOverflow.ellipsis,
-                  ))
-            ],
-          ),
-          Divider(),
-          Row(
-            children: [
-              Text(
-                '5:00 PM', 
-                style: TextStyle(
-                  color: Colors.green),
-                  ),
-                  SizedBox(width: 20,),
-                  Flexible(child: Text('My House', style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
-                  overflow: TextOverflow.ellipsis,
-                  ))
-            ],
-          ),
-        ],
+        children: snapshot.data!.docs.map((club){
+          return Padding(
+            padding: EdgeInsets.only(bottom: 10),
+            child: Row(
+              children: [
+                Text("", style: TextStyle(color: Colors.green),)
+              ],
+            ),
+          );
+        }).toList()
       );
           }
           return LinearProgressIndicator();
