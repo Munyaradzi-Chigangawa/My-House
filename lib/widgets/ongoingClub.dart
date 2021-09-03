@@ -36,7 +36,13 @@ class OngoingClub extends StatelessWidget {
             padding: EdgeInsets.only(bottom: 10),
             child: Row(
               children: [
-                Text("", style: TextStyle(color: Colors.green),)
+                Text("", style: TextStyle(color: Colors.green),),
+                SizedBox(width: 20,),
+                Flexible(
+                  child: Text("", style: TextStyle(fontWeight: FontWeight.bold),
+                  overflow: TextOverflow.ellipsis,
+                  ) 
+                  )
               ],
             ),
           );
