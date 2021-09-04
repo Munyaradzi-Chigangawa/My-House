@@ -56,7 +56,13 @@ class UpcomingClubs extends StatelessWidget {
                         ),
                         SizedBox(height: 10,),
                         Row(
-                          
+                          children: [
+                            Icon(Icons.wysiwyg),
+                            SizedBox(width: 5,),
+                            Text("${clubDetail.category}"),
+                            SizedBox(width: 20,),
+                            Text("$formattedDateTime")
+                          ],
                         )
                       ],
                     ),
