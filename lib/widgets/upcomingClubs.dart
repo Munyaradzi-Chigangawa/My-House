@@ -65,6 +65,13 @@ class UpcomingClubs extends StatelessWidget {
                             SizedBox(width: 5,),
                             Text("$formattedDateTime")
                           ],
+                        ),
+                        SizedBox(height: 15,),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            
+                          ],
                         )
                       ],
                     ),
