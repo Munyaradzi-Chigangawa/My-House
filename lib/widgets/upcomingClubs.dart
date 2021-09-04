@@ -67,16 +67,14 @@ class UpcomingClubs extends StatelessWidget {
                           ],
                         ),
                         SizedBox(height: 15,),
-                        Column(
+                        Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Icon(Icons.person),
                             SizedBox(width: 20,),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                
-                              ],
+                              children: clubDetail.speakers.map((speaker) => Text(speaker.values.last)).toList(),
                             )
                           ],
                         )
