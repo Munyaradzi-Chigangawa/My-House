@@ -43,6 +43,11 @@ class UpcomingClubs extends StatelessWidget {
                 margin: EdgeInsets.symmetric(
                   horizontal: 15, vertical: 5,
                 ),
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
               );
             });
         }
