@@ -61,6 +61,8 @@ class UpcomingClubs extends StatelessWidget {
                             SizedBox(width: 5,),
                             Text("${clubDetail.category}"),
                             SizedBox(width: 20,),
+                            Icon(Icons.calendar_today_rounded),
+                            SizedBox(width: 5,),
                             Text("$formattedDateTime")
                           ],
                         )
