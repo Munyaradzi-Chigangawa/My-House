@@ -12,7 +12,7 @@ class UpcomingClubs extends StatelessWidget {
             .where('status', isEqualTo: 'new')
             .where('dateTime',
                 isLessThan: DateTime.now().add(Duration(days: 7))).get(),
-        builder: (context, snapshot) {
+        builder: (context,AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasData) {
             if (snapshot.data!.docs.length < 1) {
               return Container(
