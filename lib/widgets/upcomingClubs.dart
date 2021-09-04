@@ -70,7 +70,14 @@ class UpcomingClubs extends StatelessWidget {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            
+                            Icon(Icons.person),
+                            SizedBox(width: 20,),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                
+                              ],
+                            )
                           ],
                         )
                       ],
