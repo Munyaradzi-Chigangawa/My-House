@@ -17,7 +17,13 @@ class UpcomingClubs extends StatelessWidget {
             if (snapshot.data!.docs.length < 1) {
               return Container(
                 margin: EdgeInsets.only(top: 30),
-                child: Column(),
+                child: Column(
+                  children: [
+                    Icon(Icons.face_sharp),
+                    Text("No Clubs available"),
+                    Text("Create your own club")
+                  ],
+                ),
               );
             }
           }
