@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:my_house/models/club.dart';
 
 class UpcomingClubs extends StatelessWidget {
   const UpcomingClubs({Key? key}) : super(key: key);
@@ -26,7 +28,22 @@ class UpcomingClubs extends StatelessWidget {
                 ),
               );
             }
-          }
+          
+          return ListView.builder(
+            physics: NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            itemCount: snapshot.data!.docs.length,
+            itemBuilder: (context, index){
+              var data = snapshot.data!.docs[index];
+              Club clubDetail = new Club.fromMap(data);
+              DateTime dateTime = DateTime.parse(clubDetail.dateTime.toDate().toString());
+              var formattedDateTime = DateFormat.MMMd().add_jm().format(dateTime);
+
+              return Container(
+                
+              );
+            });
+        }
           return Container(
             height: 300,
             child: Center(
