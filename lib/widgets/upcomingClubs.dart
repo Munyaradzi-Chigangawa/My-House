@@ -40,7 +40,9 @@ class UpcomingClubs extends StatelessWidget {
               var formattedDateTime = DateFormat.MMMd().add_jm().format(dateTime);
 
               return Container(
-                
+                margin: EdgeInsets.symmetric(
+                  horizontal: 15, vertical: 5,
+                ),
               );
             });
         }
