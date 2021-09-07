@@ -6,8 +6,7 @@ class ClubScreen extends StatefulWidget {
   const ClubScreen({ Key? key, required this.user, required this.club }) : super(key: key);
   final UserModel user;
   final Club club;
-  ClubScreen(this.club, this.user);
-  
+
 
   @override
   _ClubScreenState createState() => _ClubScreenState();
@@ -16,7 +15,13 @@ class ClubScreen extends StatefulWidget {
 class _ClubScreenState extends State<ClubScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Scaffold(
+      backgroundColor: Color(0xfff1efe5),
+      appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.black),
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
+      ),
       
     );
   }
