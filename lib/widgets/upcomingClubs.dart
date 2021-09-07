@@ -39,46 +39,48 @@ class UpcomingClubs extends StatelessWidget {
               DateTime dateTime = DateTime.parse(clubDetail.dateTime.toDate().toString());
               var formattedDateTime = DateFormat.MMMd().add_jm().format(dateTime);
 
-              return Container(
-                margin: EdgeInsets.symmetric(
-                  horizontal: 15, vertical: 5,
-                ),
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
+              return Center(
+                child: Container(
+                  margin: EdgeInsets.symmetric(
+                    horizontal: 15, vertical: 5,
                   ),
-                  child: Padding(
-                    padding: EdgeInsets.all(20),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("${clubDetail.title}", style: TextStyle(fontSize: 18),
-                        ),
-                        SizedBox(height: 10,),
-                        Row(
-                          children: [
-                            Icon(Icons.wysiwyg),
-                            SizedBox(width: 5,),
-                            Text("${clubDetail.category}"),
-                            SizedBox(width: 20,),
-                            Icon(Icons.calendar_today_rounded),
-                            SizedBox(width: 5,),
-                            Text("$formattedDateTime")
-                          ],
-                        ),
-                        SizedBox(height: 15,),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Icon(Icons.person),
-                            SizedBox(width: 20,),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: clubDetail.speakers.map((speaker) => Text(speaker.values.last)).toList(),
-                            )
-                          ],
-                        )
-                      ],
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.all(20),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("${clubDetail.title}", style: TextStyle(fontSize: 18),
+                          ),
+                          SizedBox(height: 10,),
+                          Row(
+                            children: [
+                              Icon(Icons.wysiwyg),
+                              SizedBox(width: 5,),
+                              Text("${clubDetail.category}"),
+                              SizedBox(width: 20,),
+                              Icon(Icons.calendar_today_rounded),
+                              SizedBox(width: 5,),
+                              Text("$formattedDateTime")
+                            ],
+                          ),
+                          SizedBox(height: 15,),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Icon(Icons.person),
+                              SizedBox(width: 20,),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: clubDetail.speakers.map((speaker) => Text(speaker.values.last)).toList(),
+                              )
+                            ],
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),
