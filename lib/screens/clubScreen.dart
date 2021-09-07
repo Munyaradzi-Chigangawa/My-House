@@ -1,3 +1,5 @@
+import 'dart:js';
+
 import 'package:flutter/material.dart';
 import 'package:my_house/models/club.dart';
 import 'package:my_house/models/userModel.dart';
@@ -21,6 +23,13 @@ class _ClubScreenState extends State<ClubScreen> {
         iconTheme: IconThemeData(color: Colors.black),
         backgroundColor: Colors.transparent,
         elevation: 0.0,
+      ),
+      body: SingleChildScrollView(
+        child: Container(
+          padding: EdgeInsets.all(20),
+          height: MediaQuery.of(context).size.height,
+          width: double.infinity,
+        ),
       ),
       
     );
