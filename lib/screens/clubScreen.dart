@@ -29,6 +29,10 @@ class _ClubScreenState extends State<ClubScreen> {
           padding: EdgeInsets.all(20),
           height: MediaQuery.of(context).size.height,
           width: double.infinity,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(40)
+          ),
         ),
       ),
       
