@@ -33,6 +33,9 @@ class _ClubScreenState extends State<ClubScreen> {
             color: Colors.white,
             borderRadius: BorderRadius.circular(40)
           ),
+          child: Column(
+            
+          ),
         ),
       ),
       
