@@ -117,7 +117,7 @@ class _HomeState extends State<Home> {
             Icon(Icons.arrow_circle_down,
             color: Colors.black,
             ),
-            UpcomingClubs(),
+            UpcomingClubs(user: widget.user,),
           ],
         ),
       ),

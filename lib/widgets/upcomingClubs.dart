@@ -1,10 +1,16 @@
+import 'dart:js';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:my_house/models/club.dart';
+import 'package:my_house/models/userModel.dart';
+import 'package:my_house/screens/clubScreen.dart';
 
 class UpcomingClubs extends StatelessWidget {
-  const UpcomingClubs({Key? key}) : super(key: key);
+  const UpcomingClubs({Key? key, required this.user}) : super(key: key);
+  final UserModel user;
+  
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +45,12 @@ class UpcomingClubs extends StatelessWidget {
               DateTime dateTime = DateTime.parse(clubDetail.dateTime.toDate().toString());
               var formattedDateTime = DateFormat.MMMd().add_jm().format(dateTime);
 
-              return Center(
+              return GestureDetector(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(
+                    builder: (context) => ClubScreen(user: user, club: clubDetail),
+                  ));
+                },
                 child: Container(
                   margin: EdgeInsets.symmetric(
                     horizontal: 15, vertical: 5,
