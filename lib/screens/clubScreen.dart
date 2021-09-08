@@ -42,6 +42,7 @@ class _ClubScreenState extends State<ClubScreen> {
                 children: [
                   Expanded(child: Divider()),
                   Text('Speakers', style: TextStyle(color: Colors.grey),),
+                  Expanded(child: Divider())
                 ],
               )
             ],
