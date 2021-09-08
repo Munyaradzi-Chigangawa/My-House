@@ -1,4 +1,3 @@
-import 'dart:js';
 
 import 'package:flutter/material.dart';
 import 'package:my_house/models/club.dart';
@@ -37,7 +36,14 @@ class _ClubScreenState extends State<ClubScreen> {
             children: [
               SizedBox(height: 40,),
               Text(widget.club.title,style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
-              Text(widget.club.category, style: TextStyle(fontSize: 10),)
+              Text(widget.club.category, style: TextStyle(fontSize: 10),),
+              SizedBox(height: 50,),
+              Row(
+                children: [
+                  Expanded(child: Divider()),
+                  Text('Speakers', style: TextStyle(color: Colors.grey),),
+                ],
+              )
             ],
           ),
         ),
