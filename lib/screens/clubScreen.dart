@@ -34,7 +34,11 @@ class _ClubScreenState extends State<ClubScreen> {
             borderRadius: BorderRadius.circular(40)
           ),
           child: Column(
-            
+            children: [
+              SizedBox(height: 40,),
+              Text(widget.club.title,style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
+              Text(widget.club.category, style: TextStyle(fontSize: 10),)
+            ],
           ),
         ),
       ),
