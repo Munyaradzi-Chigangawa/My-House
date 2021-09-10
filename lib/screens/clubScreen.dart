@@ -52,9 +52,15 @@ class _ClubScreenState extends State<ClubScreen> {
                 stream: FirebaseFirestore.instance.collection('clubs').doc(widget.club.clubId).snapshots(),
                 builder: (context, AsyncSnapshot snapshot) {
                   if (snapshot.hasData){
+                    var speakers = snapshot.data.data();
+                    return Expanded(child: ListView.builder(
+                      physics: NeverScrollableScrollPhysics(),
+                      
+                      itemBuilder: 
+                      ));
 
                   }
-                  return CircularProgressIndicator()
+                  return CircularProgressIndicator();
                 })
             ],
           ),
