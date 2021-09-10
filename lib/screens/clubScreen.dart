@@ -1,4 +1,5 @@
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:my_house/models/club.dart';
 import 'package:my_house/models/userModel.dart';
@@ -42,9 +43,12 @@ class _ClubScreenState extends State<ClubScreen> {
                 children: [
                   Expanded(child: Divider()),
                   Text(' Speakers ', style: TextStyle(color: Colors.grey),),
-                  Expanded(child: Divider())
+                  Expanded(child: Divider()),
                 ],
-              )
+              ),
+              StreamBuilder(
+                stream: FirebaseFirestore.instance.collection('clubs').doc(widget.club.clubId).snapshots(),
+                builder: builder)
             ],
           ),
         ),
