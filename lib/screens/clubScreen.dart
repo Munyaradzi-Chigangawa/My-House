@@ -98,7 +98,7 @@ class _ClubScreenState extends State<ClubScreen> {
               ),
               onPressed: (){}, 
               icon: Icon(CupertinoIcons.hand_raised), 
-              label: Text('Exit Club'),
+              label: Text('Join Discussion'),
               )
           ],
         ),
