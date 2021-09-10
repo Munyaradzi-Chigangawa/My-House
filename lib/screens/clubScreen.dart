@@ -77,6 +77,22 @@ class _ClubScreenState extends State<ClubScreen> {
           ),
         ),
       ),
+      bottomSheet: Container(
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+        height: 80,
+        child: Row(
+          children: [
+            ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.amber,
+              ),
+              onPressed: (){}, 
+              icon: icon, 
+              label: label,
+              )
+          ],
+        ),
+      ),
       
     );
   }
