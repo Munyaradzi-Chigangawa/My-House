@@ -58,7 +58,7 @@ class _ClubScreenState extends State<ClubScreen> {
                       itemCount: speakers['invited'].length,
                       itemBuilder: (context, index) {
                         return ListTile(
-                          title: Text(speakers['invited']['index']['name']),
+                          title: Text(speakers['invited'][index]['name']),
                         );
                       }
                       ));
