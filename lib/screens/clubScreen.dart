@@ -58,6 +58,12 @@ class _ClubScreenState extends State<ClubScreen> {
                       itemCount: speakers['invited'].length,
                       itemBuilder: (context, index) {
                         return ListTile(
+                          leading: CircleAvatar(
+                            backgroundColor: Colors.teal,
+                            child: Icon(Icons.person,
+                            color: Colors.white,
+                            ),
+                          ),
                           title: Text(speakers['invited'][index]['name']),
                         );
                       }
