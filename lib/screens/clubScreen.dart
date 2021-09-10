@@ -87,8 +87,8 @@ class _ClubScreenState extends State<ClubScreen> {
                 primary: Colors.amber,
               ),
               onPressed: (){}, 
-              icon: icon, 
-              label: label,
+              icon: Icon(Icons.exit_to_app), 
+              label: Text('Exit Club'),
               )
           ],
         ),
