@@ -64,6 +64,7 @@ class _ClubScreenState extends State<ClubScreen> {
                             color: Colors.white,
                             ),
                           ),
+                          trailing: Icon(Icons.mic_off),
                           title: Text(speakers['invited'][index]['name']),
                         );
                       }
