@@ -82,6 +82,7 @@ class _ClubScreenState extends State<ClubScreen> {
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
         height: 80,
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             ElevatedButton.icon(
               style: ElevatedButton.styleFrom(
