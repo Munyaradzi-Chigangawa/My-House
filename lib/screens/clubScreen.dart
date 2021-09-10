@@ -1,4 +1,6 @@
 
+import 'dart:js';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:my_house/models/club.dart';
@@ -48,7 +50,12 @@ class _ClubScreenState extends State<ClubScreen> {
               ),
               StreamBuilder(
                 stream: FirebaseFirestore.instance.collection('clubs').doc(widget.club.clubId).snapshots(),
-                builder: builder)
+                builder: (context, AsyncSnapshot snapshot) {
+                  if (snapshot.hasData){
+
+                  }
+                  return CircularProgressIndicator()
+                })
             ],
           ),
         ),
