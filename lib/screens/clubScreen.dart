@@ -55,8 +55,12 @@ class _ClubScreenState extends State<ClubScreen> {
                     var speakers = snapshot.data.data();
                     return Expanded(child: ListView.builder(
                       physics: NeverScrollableScrollPhysics(),
-                      
-                      itemBuilder: 
+                      itemCount: speakers['invited'].length,
+                      itemBuilder: (context, index) {
+                        return ListTile(
+                          title: Text(speakers['invited']['index']['name']),
+                        );
+                      }
                       ));
 
                   }
