@@ -2,6 +2,7 @@
 import 'dart:js';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:my_house/models/club.dart';
 import 'package:my_house/models/userModel.dart';
@@ -88,6 +89,15 @@ class _ClubScreenState extends State<ClubScreen> {
               ),
               onPressed: (){}, 
               icon: Icon(Icons.exit_to_app), 
+              label: Text('Exit Club'),
+              ),
+
+              ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.blue,
+              ),
+              onPressed: (){}, 
+              icon: Icon(CupertinoIcons.hand_raised), 
               label: Text('Exit Club'),
               )
           ],
